@@ -48,7 +48,7 @@ function App() {
     setCity(`${cityToSearch}`);
 
     fetch(
-      `http://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_apiKey}&q=${cityToSearch}`
+      `https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_apiKey}&q=${cityToSearch}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -107,7 +107,7 @@ function App() {
   useEffect(() => {
     async function getTemp() {
       fetch(
-        `http://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_apiKey}&q=${city}`
+        `https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_apiKey}&q=${city}`
       )
         .then((res) => {
           // console.log(res.json());
