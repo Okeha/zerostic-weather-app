@@ -48,7 +48,7 @@ function App() {
     setCity(`${cityToSearch}`);
 
     fetch(
-      `https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_apiKey}&q=${cityToSearch}`
+      `http://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_apiKey}&q=${cityToSearch}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -107,7 +107,7 @@ function App() {
   useEffect(() => {
     async function getTemp() {
       fetch(
-        `https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_apiKey}&q=${city}`
+        `http://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_apiKey}&q=${city}`
       )
         .then((res) => {
           // console.log(res.json());
@@ -148,7 +148,6 @@ function App() {
             width: "60%",
             margin: 0,
             padding: "20px",
-            /* From https://css.glass */
             background: "rgba(255, 255, 255, 0.2)",
             borderRadius: "16px",
             boxShadow: " 0 4px 30px rgba(0, 0, 0, 0.1)",
@@ -196,15 +195,15 @@ function App() {
           </Button>
           <Separator size={20} />
           <WeatherCard
-            city={weatherData.location.name}
-            time={formatDate(weatherData.location.localtime)}
-            text={weatherData.current.condition.text}
-            image={weatherData.current.condition.icon}
-            temp_c={weatherData.current.temp_c}
-            temp_f={weatherData.current.temp_f}
-            wind_kph={weatherData.current.wind_kph}
-            humidity={weatherData.current.humidity}
-            cloud={weatherData.current.cloud}
+            city={weatherData.location.name || "not found"}
+            time={formatDate(weatherData.location.localtime) || ""}
+            text={weatherData.current.condition.text || ""}
+            image={weatherData.current.condition.icon || ""}
+            temp_c={weatherData.current.temp_c || ""}
+            temp_f={weatherData.current.temp_f || ""}
+            wind_kph={weatherData.current.wind_kph || ""}
+            humidity={weatherData.current.humidity || ""}
+            cloud={weatherData.current.cloud || ""}
           />
         </div>
       </div>
