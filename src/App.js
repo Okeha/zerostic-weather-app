@@ -48,7 +48,7 @@ function App() {
     setCity(`${cityToSearch}`);
 
     fetch(
-      `http://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_apiKey}&q=${cityToSearch}`
+      `https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_apiKey}&q=${cityToSearch}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -110,13 +110,14 @@ function App() {
         `https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_apiKey}&q=${city}`
       )
         .then((res) => {
-          console.log(res.json());
+          // console.log(res.json());
           return res.json();
         })
         .then((data) => {
           setWeatherData(data);
         })
         .catch((err) => {
+          console.log(err);
           toast.error(`${err}`);
         });
     }
