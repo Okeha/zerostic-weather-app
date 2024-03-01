@@ -109,7 +109,10 @@ function App() {
       fetch(
         `http://api.weatherapi.com/v1/current.json?key=cb6693da66e04557811105127240103&q=${city}`
       )
-        .then((res) => res.json())
+        .then((res) => {
+          console.log(res.json());
+          return res.json();
+        })
         .then((data) => {
           setWeatherData(data);
         })
